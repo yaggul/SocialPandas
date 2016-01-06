@@ -13,13 +13,13 @@ class Panda:
         return message.format(self._name, self._gender, self._email)
 
     def __repr__(self):
-        return self.__str__()
+        return str(self)
 
     def __eq__(self, other):
         return self._name == other._name & self._email == other._email & self._gender == other._gender
 
     def __hash__(self):
-        return str(self._amount)
+        return hash(self._name)
 
     def name(self):
         return self._name
@@ -35,3 +35,17 @@ class Panda:
 
     def isFemale(self):
         return self.gender() == "female"
+
+
+def main():
+    mitko = Panda('Mitko', 'mitko@pandamail.com', 'mail')
+    alex = Panda('Alex', 'alex@pandamail.com', 'female')
+    viki = Panda('Viki', 'viki@pandamail.com', 'female')
+    viktor = Panda('Viktor', 'viktor@pandamail.com', 'female')
+    sasho = Panda('Sasho', 'sasho@pandamail.com', 'male')
+    sandy = Panda('Sandy', 'sandy@pandamail.com', 'female')
+
+
+
+if __name__ == '__main__':
+    main()

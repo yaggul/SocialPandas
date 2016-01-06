@@ -1,0 +1,10 @@
+mitko = Panda('Mitko', 'mitko@pandamail.com', 'mail')
+alex = Panda('Alex', 'alex@pandamail.com', 'female')
+viki = Panda('Viki', 'viki@pandamail.com', 'female')
+viktor = Panda('Viktor', 'viktor@pandamail.com', 'female')
+sasho = Panda('Sasho', 'sasho@pandamail.com', 'male')
+sandy = Panda('Sandy', 'sandy@pandamail.com', 'female')
+
+
+
+pandi = [mitko ,alex ,viki ,viktor ,sasho ,sandy]
