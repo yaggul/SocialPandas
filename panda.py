@@ -34,13 +34,3 @@ class Panda:
 
     def isFemale(self):
         return self.gender() == "female"
-
-
-ivo = Panda("Ivo", "ivo@pandamail.com", "male")
-
-print(ivo.name())
-print(ivo.email())
-print(ivo.gender())
-print(ivo.isMale())
-print(ivo.isFemale())
-print(ivo)
