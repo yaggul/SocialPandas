@@ -1,3 +1,5 @@
+
+
 from collections import deque
 
 
@@ -32,13 +34,16 @@ class PandaSocialNetwork:
         else:
             return False
 
-    def friends_of(self):
+    def friends_of(self, panda):
+        if self.has_panda(panda):
+            return self._soc_network[panda]
+        else:
+            return False
+
+    def connection_level(self, panda1, panda2):
         pass
 
-    def connection_level(self, other):
-        pass
-
-    def are_connected(self, other):
+    def are_connected(self, panda1, panda2):
         pass
 
     def how_many_gender_in_network(self, level, panda, gender):
