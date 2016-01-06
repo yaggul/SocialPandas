@@ -23,7 +23,7 @@ class PandaSocialNetwork:
 
     def make_friends(self, panda1, panda2):
         for i in [panda1, panda2]:
-            if self.has_panda(i) is False:
+            if not self.has_panda(i):
                 self.add_panda(i)
             else:
                 pass
