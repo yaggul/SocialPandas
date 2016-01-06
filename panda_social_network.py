@@ -6,6 +6,8 @@ from collections import deque
 class PandaSocialNetwork:
     def __init__(self):
         self._soc_network = {}
+        self.queue = deque()
+        self.visited = set()
 
     def add_panda(self, panda):
         if self.has_panda(panda):
@@ -41,10 +43,16 @@ class PandaSocialNetwork:
             return False
 
     def connection_level(self, panda1, panda2):
-        pass
+        if self.are_friends(panda1, panda2):
+            return 1
+        else:
+            pass
 
     def are_connected(self, panda1, panda2):
         pass
 
     def how_many_gender_in_network(self, level, panda, gender):
+        pass
+
+    def check_connection(self, panda1, panda2):
         pass
