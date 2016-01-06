@@ -4,6 +4,10 @@ class Panda:
         self._email = email
         self._gender = gender
 
+        def is_valid_email(self):
+            return "@pandamail.com" in self._email
+        print(is_valid_email())
+
     def __str__(self):
         message = "{} is a {} panda with email: {}"
         return message.format(self._name, self._gender, self._email)
@@ -16,9 +20,6 @@ class Panda:
 
     def __hash__(self):
         return str(self._amount)
-
-    def is_valid_email(self):
-        return "@pandamail.com" in self._email
 
     def name(self):
         return self._name
