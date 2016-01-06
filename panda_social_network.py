@@ -1,9 +1,13 @@
+
+
 from collections import deque
 
 
 class PandaSocialNetwork:
     def __init__(self):
         self._soc_network = {}
+        self.queue = deque()
+        self.visited = set()
 
     def add_panda(self, panda):
         if self.has_panda(panda):
@@ -19,7 +23,7 @@ class PandaSocialNetwork:
 
     def make_friends(self, panda1, panda2):
         for i in [panda1, panda2]:
-            if self.has_panda(i) is False:
+            if not self.has_panda(i):
                 self.add_panda(i)
             else:
                 pass
@@ -32,14 +36,23 @@ class PandaSocialNetwork:
         else:
             return False
 
-    def friends_of(self):
-        pass
+    def friends_of(self, panda):
+        if self.has_panda(panda):
+            return self._soc_network[panda]
+        else:
+            return False
 
-    def connection_level(self, other):
-        pass
+    def connection_level(self, panda1, panda2):
+        if self.are_friends(panda1, panda2):
+            return 1
+        else:
+            pass
 
-    def are_connected(self, other):
+    def are_connected(self, panda1, panda2):
         pass
 
     def how_many_gender_in_network(self, level, panda, gender):
+        pass
+
+    def check_connection(self, panda1, panda2):
         pass
