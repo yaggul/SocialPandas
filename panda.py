@@ -6,7 +6,7 @@ class Panda:
 
         def is_valid_email(self):
             return "@pandamail.com" in self._email
-        print(is_valid_email())
+        print(is_valid_email(self))
 
     def __str__(self):
         message = "{} is a {} panda with email: {}"
