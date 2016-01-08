@@ -1,4 +1,4 @@
-
+import json
 
 from collections import deque
 
@@ -42,17 +42,66 @@ class PandaSocialNetwork:
         else:
             return False
 
-    def connection_level(self, panda1, panda2):
-        if self.are_friends(panda1, panda2):
-            return 1
-        else:
-            pass
+    def connection_level(self, start_node, end_node):
+        visited = set()
+        queue = deque()
+
+        visited.add(start_node)
+        queue.append((0, start_node))
+
+        while len(queue) != 0:
+            node_with_level = queue.popleft()
+            node = node_with_level[1]
+            level = node_with_level[0]
+
+            if node == end_node:
+                return level
+
+                for neighbour in self._soc_network[node]:
+                    if neighbour not in visited:
+                        visited.add(neighbour)
+                        queue.append((level + 1, neighbour))
+
+        return visited
 
     def are_connected(self, panda1, panda2):
-        pass
+        if self.connection_level(panda1, panda2) == -1:
+            return False
+        else:
+            return True
 
     def how_many_gender_in_network(self, level, panda, gender):
+        visited = set()
+        queue = deque()
+        counter = 0
+        gender_count = 0
+
+        visited.add(panda)
+        queue.append((0, panda))
+
+        while len(queue) != 0:
+            node_with_level = queue.popleft()
+            node = node_with_level[1]
+            counter = node_with_level[0]
+
+            if counter == level:
+                queue.append(node_with_level)
+                for i in queue:
+                    # print(i)
+                    if i[1].gender() == gender:
+                        gender_count += 1
+
+                return gender_count
+
+            for neightbour in self._soc_network[node]:
+                if neightbour not in visited:
+                    visited.add(neightbour)
+                    queue.append((counter + 1, neightbour))
+
+        return gender_count
+
+    def load(self):
         pass
 
-    def check_connection(self, panda1, panda2):
+    def save(self):
         pass

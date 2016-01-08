@@ -8,3 +8,6 @@ sandy = Panda('Sandy', 'sandy@pandamail.com', 'female')
 
 
 pandi = [mitko ,alex ,viki ,viktor ,sasho ,sandy]
+
+
+{'Alex': ['Sasho'], 'Sandy': ['Viki'], 'Sasho': ['Mitko', 'Alex', 'Viki'], 'Viki': ['Sasho', 'Sandy', 'Viktor'], 'Viktor': ['Viki'], 'Mitko': ['Sasho']}
