@@ -13,7 +13,7 @@ class Panda:
         return message.format(self._name, self._gender, self._email)
 
     def __repr__(self):
-        return str(self)
+        return '{}'.format(self._name)
 
     def __eq__(self, other):
         return self._name == other._name & self._email == other._email & self._gender == other._gender
