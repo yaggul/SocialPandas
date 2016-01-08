@@ -16,7 +16,7 @@ class Panda:
         return '{}'.format(self._name)
 
     def __eq__(self, other):
-        return self._name == other._name & self._email == other._email & self._gender == other._gender
+        return self._name == other._name and self._email == other._email and self._gender == other._gender
 
     def __hash__(self):
         return hash(self._name)
