@@ -64,6 +64,11 @@ class TestSocialNetwork(unittest.TestCase):
 
         self.assertTrue(self.network.has_panda(self.ivo))
 
+    # def test_add_panda_when_alredy_there(self):
+    #     self.network.add_panda(self.ivo)
+    #     with self.assertRaises('PandaAlreadyThere'):
+    #         self.network.add_panda(self.ivo)
+
     def test_has_panda_when_panda_not_in_network(self):
         rado = Panda("Rado", "rado@pandamail.com", "male")
         self.assertFalse(self.network.has_panda(rado))
@@ -134,7 +139,34 @@ class TestSocialNetwork(unittest.TestCase):
         self.assertFalse(self.network.are_connected(self.ivo, viki))
 
     def test_how_many_gender_in_network(self):
-        pass
+        rado = Panda("Rado", "rado@pandamail.com", "male")
+        tony = Panda("Tony", "tony@pandamail.com", "female")
+        mimi = Panda("Mimi", "mimi@pandamail.com", "female")
+        viki = Panda("Viki", "viki@pandamail.com", "female")
+        mitko = Panda("Mitko", "mitko@pandamail.com", "male")
+        self.network.make_friends(self.ivo, rado)
+        self.network.make_friends(rado, tony)
+        self.network.make_friends(rado, mimi)
+        self.network.make_friends(rado, mitko)
+        self.network.make_friends(mimi, viki)
+
+        self.assertEqual(self.network.how_many_gender_in_network(2, self.ivo, "male"), 2)
+        self.assertEqual(self.network.how_many_gender_in_network(2, self.ivo, "female"), 2)
+        self.assertEqual(self.network.how_many_gender_in_network(3, self.ivo, "female"), 3)
+
+    def test_how_many_gender_in_network_no_such_level(self):
+        rado = Panda("Rado", "rado@pandamail.com", "male")
+        tony = Panda("Tony", "tony@pandamail.com", "female")
+        mimi = Panda("Mimi", "mimi@pandamail.com", "female")
+        viki = Panda("Viki", "viki@pandamail.com", "female")
+        mitko = Panda("Mitko", "mitko@pandamail.com", "male")
+        self.network.make_friends(self.ivo, rado)
+        self.network.make_friends(rado, tony)
+        self.network.make_friends(rado, mimi)
+        self.network.make_friends(rado, mitko)
+        self.network.make_friends(mimi, viki)
+
+        self.assertEqual(self.network.how_many_gender_in_network(5, self.ivo, "female"), 3)
 
 if __name__ == '__main__':
     unittest.main()
