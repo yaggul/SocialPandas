@@ -67,30 +67,27 @@ class PandaSocialNetwork:
         visited = set()
         queue = deque()
         counter = 0
-        gender_count = 0
+        if panda.gender() == gender:
+            gender_count = -1
+        else:
+            gender_count = 0
 
         visited.add(panda)
         queue.append((0, panda))
 
-        while len(queue) != 0:
+        while len(queue) != 0 and level != counter:
             node_with_level = queue.popleft()
             node = node_with_level[1]
             counter = node_with_level[0]
-
-            if counter == level:
-                queue.append(node_with_level)
-                for i in queue:
-                    # print(i)
-                    if i[1].gender() == gender:
-                        gender_count += 1
-
-                return gender_count
 
             for neightbour in self._soc_network[node]:
                 if neightbour not in visited:
                     visited.add(neightbour)
                     queue.append((counter + 1, neightbour))
 
+        for panda in visited:
+            if panda.gender() == gender:
+                gender_count += 1
         return gender_count
 
     def load(self):
