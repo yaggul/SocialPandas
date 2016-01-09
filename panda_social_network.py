@@ -37,6 +37,8 @@ class PandaSocialNetwork:
             return False
 
     def connection_level(self, start_node, end_node):
+        if not (self.has_panda(start_node) or self.has_panda(end_node)):
+            return False
         visited = set()
         queue = deque()
 
@@ -56,10 +58,10 @@ class PandaSocialNetwork:
                     visited.add(neighbour)
                     queue.append((level + 1, neighbour))
 
-        return level
+        return -1
 
     def are_connected(self, panda1, panda2):
-        return self.connection_level(panda1, panda2) == -1
+        return self.connection_level(panda1, panda2) != -1
 
     def how_many_gender_in_network(self, level, panda, gender):
         visited = set()
