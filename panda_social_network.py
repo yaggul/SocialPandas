@@ -51,12 +51,12 @@ class PandaSocialNetwork:
             if node == end_node:
                 return level
 
-                for neighbour in self._soc_network[node]:
-                    if neighbour not in visited:
-                        visited.add(neighbour)
-                        queue.append((level + 1, neighbour))
+            for neighbour in self._soc_network[node]:
+                if neighbour not in visited:
+                    visited.add(neighbour)
+                    queue.append((level + 1, neighbour))
 
-        return visited
+        return level
 
     def are_connected(self, panda1, panda2):
         return self.connection_level(panda1, panda2) == -1
