@@ -1,8 +1,8 @@
 class Panda:
-    def __init__(self, name, email, gender):
-        self._name = name
-        self._email = email
-        self._gender = gender
+    def __init__(self, *args):
+        self._name = args[0]
+        self._email = args[1]
+        self._gender = args[2]
 
         def is_valid_email(self):
             return "@pandamail.com" in self._email
@@ -36,7 +36,7 @@ class Panda:
     def isFemale(self):
         return self.gender() == "female"
 
-
+'''
 def main():
     mitko = Panda('Mitko', 'mitko@pandamail.com', 'mail')
     alex = Panda('Alex', 'alex@pandamail.com', 'female')
@@ -49,3 +49,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+'''
