@@ -3,10 +3,21 @@ class Panda:
         self._name = args[0]
         self._email = args[1]
         self._gender = args[2]
+'''
+=============
+    def __init__(self, name, email, gender):
+        if not Panda.__is_valid_email(email):
+            raise Exception("Invalid email")
 
-        def is_valid_email(self):
-            return "@pandamail.com" in self._email
-        print(is_valid_email(self))
+        self._email = email
+        self._name = name
+        self._gender = gender
+>>>>>>> c2240ae0f939cca3f1aeb5b14f22ae1816595d57
+'''
+
+    @staticmethod
+    def __is_valid_email(email):
+        return "@pandamail.com" in email
 
     def __str__(self):
         message = "{} is a {} panda with email: {}"
