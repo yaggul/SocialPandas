@@ -1,13 +1,17 @@
 import json
-
+from panda import Panda
 from collections import deque
 
 
 class PandaSocialNetwork:
     def __init__(self):
         self._soc_network = {}
+        # self._soc_network_loaded = {}
         self.queue = deque()
         self.visited = set()
+        # self.people = {'People': []}
+        self.people = {}
+        self.people2 = {}
 
     def add_panda(self, panda):
         if self.has_panda(panda):
@@ -100,8 +104,48 @@ class PandaSocialNetwork:
 
         return gender_count
 
+    def gen_json(self):
+        for i in self._soc_network.keys():
+            people_prop = '{},{},{}'.format(i._name, i._email, i._gender)
+            people_friends = [x._name for x in self._soc_network[i]]
+            # self.people['People'].append({people_prop: people_friends})
+            self.people.update({people_prop: people_friends})
+
+    def load_json(self):
+        for key, value in self.people.items():
+            people_prop = Panda(*key.split(','))
+            people_friends = [x for x in value]
+            self.people2.update({people_prop: people_friends})
+
+    def gen_soc_network(self):
+        for i in self.people2.keys():
+            self._soc_network.update({i: []})
+
+        for k1, v1 in self.people2.items():
+            for i in self.people2[k1]:
+                for j in [key for key in self.people2.keys()]:
+                    if i == j._name:
+                        self._soc_network[k1].append(j)
+                    else:
+                        pass
+
+    def print_json(self):
+        return self.people
+
+    def print_soc_network(self):
+        return self._soc_network
+
+    def print_people2(self):
+        return self.people2
+
     def load(self):
-        pass
+        with open('./social_db.json', 'r') as socdbin:
+            self.people = json.load(socdbin)
+
+        self.load_json()
 
     def save(self):
-        pass
+        self.gen_json()
+
+        with open('./social_db.json', 'w') as socdbout:
+            json.dump(self.people, socdbout)

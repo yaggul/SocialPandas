@@ -11,3 +11,32 @@ pandi = [mitko ,alex ,viki ,viktor ,sasho ,sandy]
 
 
 {'Alex': ['Sasho'], 'Sandy': ['Viki'], 'Sasho': ['Mitko', 'Alex', 'Viki'], 'Viki': ['Sasho', 'Sandy', 'Viktor'], 'Viktor': ['Viki'], 'Mitko': ['Sasho']}
+
+[k.split(',')[0].lower() for i in range(0, len(network.people['People'])) for k,v in network.people['People'][i].items()]
+
+[globals()[k.split(',')[0].lower()] = Panda(k.split(',')) for i in range(0, len(network.people['People'])) for k, v in network.people['People'][i].items()]
+
+
+for i in range(0, len(network.people['People'])):
+    for k, v in network.people['People'][i].items():
+        pandi = globals()[k.split(',')[0].lower()] = Panda(k.split(','))
+
+
+
+network.make_friends(mitko, alex)
+network.make_friends(viktor, alex)
+network.make_friends(viki, alex)
+network.make_friends(sasho, alex)
+network.make_friends(viki, sandy)
+
+for i in network.people2.keys():
+    self._soc_network_loaded.update({i: []})
+
+for k1,v1 in network.people2.items():
+    for i in network.people2[k1]:
+        for j in [key for key in network.people2.keys()]:
+            if i ==j._name:
+                self._soc_network_loaded[k1].append(j)
+            else:
+                pass
+
