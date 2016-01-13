@@ -3,17 +3,17 @@ class Panda:
         self._name = args[0]
         self._email = args[1]
         self._gender = args[2]
-'''
-=============
-    def __init__(self, name, email, gender):
-        if not Panda.__is_valid_email(email):
-            raise Exception("Invalid email")
+    '''
+    =============
+        def __init__(self, name, email, gender):
+            if not Panda.__is_valid_email(email):
+                raise Exception("Invalid email")
 
-        self._email = email
-        self._name = name
-        self._gender = gender
->>>>>>> c2240ae0f939cca3f1aeb5b14f22ae1816595d57
-'''
+            self._email = email
+            self._name = name
+            self._gender = gender
+    >>>>>>> c2240ae0f939cca3f1aeb5b14f22ae1816595d57
+    '''
 
     @staticmethod
     def __is_valid_email(email):
